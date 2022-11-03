@@ -1,0 +1,156 @@
+object BankDataForm: TBankDataForm
+  Left = 0
+  Top = 0
+  Caption = 'Bank Data API - APILayer'
+  ClientHeight = 568
+  ClientWidth = 384
+  FormFactor.Width = 1440
+  FormFactor.Height = 900
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object Header: TToolBar
+    Size.Width = 384.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object HeaderLabel: TLabel
+      Align = Contents
+      StyledSettings = [Family, Size, FontColor]
+      Size.Width = 384.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'toollabel'
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      TextSettings.HorzAlign = Center
+      Text = 'APILayer Marketplace'
+    end
+  end
+  object Footer: TToolBar
+    Align = Bottom
+    Position.Y = 520.000000000000000000
+    Size.Width = 384.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'bottomtoolbar'
+    TabOrder = 1
+  end
+  object Edit1: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 5
+    TextSettings.Font.StyleExt = {00060000000000000004000000}
+    Position.X = 8.000000000000000000
+    Position.Y = 64.000000000000000000
+    Size.Width = 368.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TextPrompt = 'SWIFT Check'
+    StyledSettings = [Family, Size, FontColor]
+    object Button1: TButton
+      Align = Right
+      StyledSettings = [Family, Size, FontColor]
+      Position.X = 288.000000000000000000
+      TabOrder = 0
+      Text = 'Get'
+      TextSettings.Font.StyleExt = {00060000000000000004000000}
+      OnClick = Button1Click
+    end
+  end
+  object Edit2: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 4
+    TextSettings.Font.StyleExt = {00060000000000000004000000}
+    Position.X = 8.000000000000000000
+    Position.Y = 112.000000000000000000
+    Size.Width = 368.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TextPrompt = 'IBAN Check'
+    StyledSettings = [Family, Size, FontColor]
+    object Button2: TButton
+      Align = Right
+      StyledSettings = [Family, Size, FontColor]
+      Position.X = 288.000000000000000000
+      TabOrder = 0
+      Text = 'Get'
+      TextSettings.Font.StyleExt = {00060000000000000004000000}
+      OnClick = Button2Click
+    end
+  end
+  object Edit3: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 3
+    TextSettings.Font.StyleExt = {00060000000000000004000000}
+    Position.X = 8.000000000000000000
+    Position.Y = 160.000000000000000000
+    Size.Width = 368.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TextPrompt = 'IBAN Structure'
+    StyledSettings = [Family, Size, FontColor]
+    object Button3: TButton
+      Align = Right
+      StyledSettings = [Family, Size, FontColor]
+      Position.X = 288.000000000000000000
+      TabOrder = 0
+      Text = 'Get'
+      TextSettings.Font.StyleExt = {00060000000000000004000000}
+    end
+  end
+  object Memo1: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    Lines.Strings = (
+      'Response comes here...')
+    StyledSettings = [Family, Size, FontColor]
+    TextSettings.Font.StyleExt = {00060000000000000004000000}
+    TextSettings.WordWrap = True
+    Position.X = 8.000000000000000000
+    Position.Y = 208.000000000000000000
+    Size.Width = 368.000000000000000000
+    Size.Height = 129.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 11
+    Viewport.Width = 364.000000000000000000
+    Viewport.Height = 125.000000000000000000
+  end
+  object RESTClient1: TRESTClient
+    BaseURL = 
+      'https://api.apilayer.com/bank_data/swift_check?swift_code=COBADE' +
+      'FF574&apikey=S5MmmH3NGsRfL432o98VBVJHf9zfAgzm'
+    Params = <>
+    Left = 96
+    Top = 56
+  end
+  object RESTRequest1: TRESTRequest
+    AssignedValues = [rvConnectTimeout, rvReadTimeout]
+    Client = RESTClient1
+    Params = <>
+    Response = RESTResponse1
+    Left = 264
+    Top = 56
+  end
+  object RESTResponse1: TRESTResponse
+    Left = 176
+    Top = 56
+  end
+  object RESTClient2: TRESTClient
+    BaseURL = 
+      'https://api.apilayer.com/bank_data/iban_validate?iban_number=DE8' +
+      '9370400440532013000&apikey=S5MmmH3NGsRfL432o98VBVJHf9zfAgzm'
+    Params = <>
+    Left = 80
+    Top = 112
+  end
+  object RESTRequest2: TRESTRequest
+    AssignedValues = [rvConnectTimeout, rvReadTimeout]
+    Client = RESTClient2
+    Params = <>
+    Response = RESTResponse2
+    Left = 272
+    Top = 112
+  end
+  object RESTResponse2: TRESTResponse
+    Left = 168
+    Top = 112
+  end
+end
