@@ -8,7 +8,12 @@ uses
   FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
   FMX.Controls.Presentation, FMX.Edit, REST.Types, REST.Client,
   Data.Bind.Components, Data.Bind.ObjectScope, FMX.Memo.Types, FMX.ScrollBox,
-  FMX.Memo;
+  FMX.Memo, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  System.Rtti, FMX.Grid.Style, Fmx.Bind.Grid, System.Bindings.Outputs,
+  Fmx.Bind.Editors, Data.Bind.EngExt, Fmx.Bind.DBEngExt, Data.Bind.Grid,
+  FMX.Grid, Data.Bind.DBScope, Data.DB, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, REST.Response.Adapter;
 
 type
   TBankDataForm = class(TForm)
@@ -28,8 +33,19 @@ type
     RESTClient2: TRESTClient;
     RESTRequest2: TRESTRequest;
     RESTResponse2: TRESTResponse;
+    RESTClient3: TRESTClient;
+    RESTRequest3: TRESTRequest;
+    RESTResponse3: TRESTResponse;
+    RESTResponseDataSetAdapter1: TRESTResponseDataSetAdapter;
+    FDMemTable1: TFDMemTable;
+    BindSourceDB1: TBindSourceDB;
+    StringGridBindSourceDB1: TStringGrid;
+    LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource;
+    BindingsList1: TBindingsList;
+    StyleBook1: TStyleBook;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -42,12 +58,6 @@ var
 implementation
 
 {$R *.fmx}
-
-{
-
-  UPDATE THE API ACCESS KEY!
-
-}
 
 procedure TBankDataForm.Button1Click(Sender: TObject);
 begin
@@ -81,6 +91,11 @@ begin
 
   Memo1.Lines.Clear;
   Memo1.Lines.Add(RESTResponse2.Content);
+end;
+
+procedure TBankDataForm.FormCreate(Sender: TObject);
+begin
+  RESTRequest3.Execute;
 end;
 
 end.
